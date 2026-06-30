@@ -73,21 +73,21 @@ probar_link <- function(url) {
 }
 # Catálogo -----------------------------------------------------
 catalogo_puestos <- read_xlsx(
-"C:/Users/Cecilia Pereo/IMSS-BIENESTAR/División de Procesamiento de información - Repositorio de Datos/Plantilla/catalogos/Catalogo_CNPM_2026_F.xlsx"
+  "C:/Users/Cecilia Pereo/IMSS-BIENESTAR/División de Procesamiento de información - Repositorio de Datos/Plantilla/catalogos/Catalogo_CNPM_2026_F.xlsx"
 ) %>% 
   clean_names() %>% 
   select(cnpm = codigo_cnpm_26,
          denominacion_de_puesto)
 
 hbc <- read_xlsx(
-"C:/Users/Cecilia Pereo/IMSS-BIENESTAR/División de Procesamiento de información - Proyectos/80_Basico comunitarios dificil acceso/bases/bases_clusters_viejas/cluster_19_carlos_long_simple.xlsx"
+  "C:/Users/Cecilia Pereo/IMSS-BIENESTAR/División de Procesamiento de información - Proyectos/80_Basico comunitarios dificil acceso/bases/bases_clusters_viejas/cluster_19_carlos_long_simple.xlsx"
 )
 
 vector_ancla_cluster <- c(hbc$clues_imb, substr(hbc$nombre_cluster,1,11)) |> unique()
 vector_ancla_cluster <- vector_ancla_cluster[!is.na(vector_ancla_cluster)]
 
 team_completos <- base_eq_completos <- readxl::read_xlsx(
-"C:/Users/Cecilia Pereo/IMSS-BIENESTAR/División de Procesamiento de información - Proyectos/87_ Plan de contratacion/Data/equipo itinerantes 23062026.xlsx"
+  "C:/Users/Cecilia Pereo/IMSS-BIENESTAR/División de Procesamiento de información - Proyectos/87_ Plan de contratacion/Data/equipo itinerantes 23062026.xlsx"
 ) %>% 
   clean_names() %>% 
   mutate(
@@ -105,14 +105,14 @@ team_completos <- base_eq_completos <- readxl::read_xlsx(
   )
 
 base_curps_limpios <- readxl::read_xlsx(
- "C:/Users/Cecilia Pereo/Downloads/equipo itinerantes completos_24_06_2026.xlsx",
- sheet = "base"
+  "C:/Users/Cecilia Pereo/Downloads/equipo itinerantes completos_24_06_2026.xlsx",
+  sheet = "base"
 ) %>%
   select(curp, nombre) %>%
   filter(!is.na(nombre))
 
 base_alex_original <- st_read(
-"C:/Users/Cecilia Pereo/IMSS-BIENESTAR/División de Procesamiento de información - Proyectos/80_Basico comunitarios dificil acceso/bases/cluster_19_rutas_geo.gpkg"
+  "C:/Users/Cecilia Pereo/IMSS-BIENESTAR/División de Procesamiento de información - Proyectos/80_Basico comunitarios dificil acceso/bases/cluster_19_rutas_geo.gpkg"
 ) 
 # Google Sheets -----------------------------------------------------------
 gs4_deauth()
@@ -412,7 +412,7 @@ base_final %>%
   distinct(estado_ancla, cluster_id, equipo_itinerante) %>% 
   summarise(total_equipos = sum(equipo_itinerante, na.rm = TRUE))
 base_completos <- readxl::read_xlsx(
-"C:/Users/Cecilia Pereo/IMSS-BIENESTAR/División de Procesamiento de información - Proyectos/87_ Plan de contratacion/Data/equipo itinerantes 23062026.xlsx"
+  "C:/Users/Cecilia Pereo/IMSS-BIENESTAR/División de Procesamiento de información - Proyectos/87_ Plan de contratacion/Data/equipo itinerantes 23062026.xlsx"
 )
 
 val <- inner_join(base_completos, base_final) 
@@ -428,7 +428,7 @@ val2 <- inner_join(base_final, base_completos)
 
 # Base team qx, con datos Carlos ------------------------------------------
 base_completos <- readxl::read_xlsx(
- "C:/Users/Cecilia Pereo/IMSS-BIENESTAR/División de Procesamiento de información - Proyectos/87_ Plan de contratacion/Data/equipo itinerantes 23062026.xlsx"
+  "C:/Users/Cecilia Pereo/IMSS-BIENESTAR/División de Procesamiento de información - Proyectos/87_ Plan de contratacion/Data/equipo itinerantes 23062026.xlsx"
 ) %>% 
   transmute(ancla_entidad = estado_ancla, cnpm = clave_del_puesto,
             nombre_cluster = cluster_id, estado_ancla, clues_ancla,

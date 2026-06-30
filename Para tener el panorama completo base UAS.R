@@ -439,9 +439,9 @@ base_estado_375_con_uas <- base_necesidad_375 %>%
   select(
     estado_ancla,
     cluster_id,
+    codigo_cnpm,
     clues_ancla,
     nombre_del_ancla,
-    codigo_cnpm,
     nombre_del_puesto,
     puesto_arm,
     nombre,
@@ -451,7 +451,10 @@ base_estado_375_con_uas <- base_necesidad_375 %>%
     fuente_candidato,
     ocupado_con_uas,
     estatus_ocupacion
-  )
+  ) %>% 
+  arrange(estado_ancla,
+          cluster_id,
+          codigo_cnpm)
 
 # 7) Validaciones 
 
