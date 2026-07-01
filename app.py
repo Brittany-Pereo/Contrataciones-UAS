@@ -1,11 +1,3 @@
-password = st.text_input(
-    "Contraseña de acceso",
-    type="password"
-)
-
-if password != "UAS2026":
-    st.stop()
-    
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -17,6 +9,17 @@ st.set_page_config(
     layout="wide"
 )
 
+# -------------------------
+# Acceso
+# -------------------------
+
+password = st.text_input(
+    "Contraseña de acceso",
+    type="password"
+)
+
+if password != "UAS2026":
+    st.stop()
 # -------------------------
 # Cargar base
 # -------------------------
